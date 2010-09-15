@@ -1,0 +1,152 @@
+\documentclass [memoire, letterpaper, oneside, fleqn,12pt]{thETS-latin1}
+% pour une maîtrise rajouter l'option memoire à la classe (defaut:these)
+% pour activer les liens hypertextes, ajouter l'option hypertext
+
+\listfiles
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+
+% à décommanter et modifier si nécessaire dans le cas d'une maitrise
+\genie{Logiciel} %\genie{électrique}
+
+\title{titre de la thèse}
+
+\author{Prénom NOM}
+\authorcopyright{Prénom Nom}
+
+\datesoutenance{\today}
+
+\datedepot{\today}
+
+\directeur{M. }{Prénom Nom}{département et institution}
+
+\codirecteur{Mme.}{Prénom Nom}{département et institution}
+
+\president{M.}{Prénom Nom}{département et institution}
+
+\jury{Mme.}{Prénom Nom}{département et institution}{}
+
+\examinexterne{M.}{Prénom Nom}{département et institution}{}
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE TITRE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PRÉSENTATION JURY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\presentjury
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AVANT PROPOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{avantpropos}
+
+\end{avantpropos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REMERCIEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{remerciements}
+
+\end{remerciements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SOMMAIRE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\motscles{mot-clé1, mot-clé2}
+\begin{sommaire}
+Ceci est le résumé.
+\end{sommaire} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\keywords{keyword1, keyword2}
+\begin{abstract}{title in english}
+Here is the abstract.
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE DES MATIÈRES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTE DES TABLEAUX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTE DES FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTE DES SYMBOLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{listofsymbols}[3cm]
+\item[symbol] signification
+\end{listofsymbols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CORPS DE LA THÈSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\pagenumbering{arabic}
+
+\reversemarginpar % pour que les marginpar s'amenent a GAUCHE du doc.
+
+\begin{introduction}
+
+\end{introduction}
+
+\chapter{Chapitre}
+\section{Section}
+\subsection{Sous-Section}
+\subsubsection{Sous-Sous-Section}
+%\include{chapitre1}
+%\include{chapitre2}
+%\include{chapitre3}
+%\include{chapitre4}
+%\include{chapitre5}
+%\include{chapitre6}
+%\include{chapitre7}
+%\include{chapitre8}
+
+\begin{conclusion}
+
+\end{conclusion}
+
+\begin{remerciements}
+
+\end{remerciements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ANNEXE:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\multiannexe % si on a plus d'une annexe
+%\include{annexe1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHIE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain-fr}
+%\bibliographystyle{plainnat-fr} %With \usepackage[authoryear]{natbib}
+\renewcommand{\bibname}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+\addcontentsline{toc}{chapter}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+%\bibliography{nom_fichier_bib} % à décommander et indiquer la liste des fichiers bib
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+
+\end{document}
