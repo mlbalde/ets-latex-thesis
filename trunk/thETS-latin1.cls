@@ -8,6 +8,7 @@
 %% Corrections apportées par Rémi Menegon (remi.menegon.1@etsmtl.ca)
 %% [3 Septembre 2010]
 %% * Possibilité de ne pas avoir de codirecteur (bug patch)
+%% * More math symbols
 %%
 %% [9 Aout 2010]
 %% * Modification de titre de la bibliographie
@@ -158,6 +159,7 @@
 \RequirePackage[]{silence} %% Suppress useless Warning in this class
 \RequirePackage[ruled,noresetcount,noend]{algorithm2e}
 \RequirePackage{setspace}
+\RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
 %\RequirePackage[authoryear]{natbib}
 
