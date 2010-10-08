@@ -157,7 +157,7 @@
 \RequirePackage{float}
 \RequirePackage{listings} %% Code listings (extraits de code)
 \RequirePackage[]{silence} %% Suppress useless Warning in this class
-\RequirePackage[ruled,noresetcount,noend]{algorithm2e}
+\RequirePackage[ruled,noresetcount,noend,french]{algorithm2e}
 \RequirePackage{setspace}
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
