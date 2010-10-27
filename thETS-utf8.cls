@@ -169,8 +169,8 @@
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
 %\RequirePackage[authoryear]{natbib}
-\RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.75in,bmargin=0.75in,body={6.25in,8.75in}]{geometry} %% Marges du document
-\RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption} %% Changement Caption
+\RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.75in,bmargin=0.75in,body={6.25in,8.75in}]{geometry}
+%\RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption}
 
 %% Exec de l'option web pour activer hyperref (Menegon 26-07-2010)
 \ifthenelse{\equal{\WithHyperref}{true}}{
@@ -470,7 +470,7 @@
       MONTRÉAL, LE \MakeUppercase{\@datedepot}%
       
       \vspace{1em}%{.7cm}
-      {\footnotesize \copyright~Tous droits réservés, \@authorcopyright, \number\year} % ©Tous droits réservés, <Prénom et nom, année de publication>
+      {\footnotesize \copyright~Tous droits réservés, \@authorcopyright, \number\year} % Tous droits réservés, <Prénom et nom, année de publication>
    \end{center}
    \end{titlepage}
 \cleardoublepage
@@ -1199,79 +1199,45 @@
   \endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newlength{\tempabovecaptionskip}   %% Pour enlever l'éspace après le caption du tableau
 
 
-%%%%
-% On utilise le package caption pour définir le format des légendes
-%
-\captionsetup[figure]{labelfont={bf,singlespacing},justification=centering}
-\captionsetup[table]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Etant donne que la commande \captionsetup{list=no} n a pas marche pour enlever les legendes
-% des figures et des tableaux des listes de figures et tableau, je triche en declarant un nouveau
-% float pour les annexes []
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareCaptionType{figureap}[Figure]
-\captionsetup[figureap]{labelfont=bf,justification=centering}
-\renewenvironment{figureap}[1][]{%
-  \@float{figureap}%
-  \centering
-}{%
-  \end@float
-}
-
-\DeclareCaptionType{tableap}[Tableau]
-\captionsetup[tableap]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
-\renewenvironment{tableap}[1][]{%
-  \@float{tableap}%
-%  \footnotesize
-  \centering
-}{%
-  \end@float
-}
-
-
-%\def\tablestring{table}%
-%\def\figurestring{figure}%
-%\def\listingstring{listing}%
-%%\def\algorithmstring{algorithme}%
-%\long\def\@makecaption#1#2#3{%
-%\ifx\figurestring#3%
-%  \vskip\abovecaptionskip%
-%  \linespread{1}
-%  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
-%  \ifdim \wd\@tempboxa <\hsize
-%    \global \@minipagefalse
-%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-%  \else
-%    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
-%    \global \@minipagefalse
-%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-%  \fi
-%  \vskip\belowcaptionskip%
-%\else
-%  \ifx\tablestring#3
-%    %% Pour enlever l'éspace après le caption du tableau ...plus besoin
-%%    \setlength{\tempabovecaptionskip}{\abovecaptionskip}
-%%    \setlength{\abovecaptionskip}{-0.4cm}
-%    
-%    \vskip \belowcaptionskip%
-%    \begin{center}
-%      \renewcommand{\baselinestretch}{1}\small\normalsize%
-%      {\normalsize #1 \ \ #2}\par%
-%%      {\normalsize #1}\par%
-%%      \vskip 12\p@%
-%%      {\normalsize #2}\par%
-%    \end{center}
-%    \vskip
-%    \abovecaptionskip%
-%
-%%    \setlength{\abovecaptionskip}{\tempabovecaptionskip} %%réprends l'ancienne valeur
-%  %% Pascal Giard - Ajout support pour les captions autres que table et figure
-%  \else
+\def\tablestring{table}%
+\def\figurestring{figure}%
+\def\listingstring{listing}%
+%\def\algorithmstring{algorithme}%
+\long\def\@makecaption#1#2#3{%
+\ifx\figurestring#3%
+  \vskip\abovecaptionskip%
+  \linespread{1}
+  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
+  \ifdim \wd\@tempboxa <\hsize
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \else
+    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip%
+\else
+  \ifx\tablestring#3
+    \vskip\belowcaptionskip%
+    \begin{center}
+      \renewcommand{\baselinestretch}{1}\small\normalsize%
+      {\normalsize #1 #2}\par%
+%      {\normalsize #1}\par%
+%      \vskip 12\p@%
+%      {\normalsize #2}\par%
+    \end{center}
+    \vskip\abovecaptionskip%
+  %% Pascal Giard - Ajout support pour les captions autres que table et figure
+  \else
+    \vskip\abovecaptionskip%
+    \begin{center}
+      \renewcommand{\baselinestretch}{1}\small\normalsize%
+      {\normalsize \parbox[t]{\largetiqfig}{\bfseries#1} \bfseries #2}\par%
+    \end{center}
+    \vskip\belowcaptionskip%
 %    \vskip\abovecaptionskip
 %    \linespread{1}
 %    \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
@@ -1284,9 +1250,10 @@
 %      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
 %    \fi
 %    \vskip\belowcaptionskip
-%  \fi
-%\fi
-%}
+  \fi
+\fi
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numérotation des annexes en chiffres arabes
