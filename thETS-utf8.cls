@@ -6,6 +6,13 @@
 %% /usr/share/texmf/tex/latex/base/book.cls
 %%
 %% Corrections apportées par Rémi Menegon (remi.menegon.1@etsmtl.ca)
+%% [27 Octobre 2010]
+%% * Changement de times en mathptmx, nouvelle version
+%% * Changement marges avec geometry
+%% * Changement captions des figures
+%% * Changement taille du copyright
+%% * Récupération total de la gestion du caption du cls de [Paulo Cavalin]
+%%
 %% [3 Septembre 2010]
 %% * Possibilité de ne pas avoir de codirecteur (bug patch)
 %% * More math symbols
@@ -115,7 +122,7 @@
 %% 
 %% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\filedate{2010/09/14}
+\def\filedate{2010/10/27}
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01] %% Mis par défaut
 \ProvidesClass{thETS-utf8}[\filedate\space Standard ETS class]
@@ -144,7 +151,7 @@
 
 
 \LoadClass{book} %% Chargement de la classe book
-\RequirePackage{times} %% Police Times
+\RequirePackage{mathptmx} %% Police Times (New)
 \RequirePackage[frenchb]{babel} %% Francisation du document 
 \RequirePackage[utf8]{inputenc} %% Prise en compte de la frappe de caractères accentués
 \RequirePackage[T1]{fontenc} %% Codage standard des fontes LaTeX pour le français 
@@ -162,6 +169,8 @@
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
 %\RequirePackage[authoryear]{natbib}
+\RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.75in,bmargin=0.75in,body={6.25in,8.75in}]{geometry} %% Marges du document
+\RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption} %% Changement Caption
 
 %% Exec de l'option web pour activer hyperref (Menegon 26-07-2010)
 \ifthenelse{\equal{\WithHyperref}{true}}{
@@ -181,7 +190,7 @@
 }
 \newcommand{\AffilDirect}{Affiliation du directeur}
 \newcommand{\PrefCoDirect}{M.}
-\newcommand{\NomCoDirect}{Nom du co-directeur}
+\newcommand{\NomCoDirect}{Nom du codirecteur}
 \newcommand{\TxtCoDirect}{codirecteur}
 \newcommand{\AffilCoDirect}{Affiliation du codirecteur}
 \newcommand{\PrefPresid}{M.}
@@ -292,27 +301,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Marges horizontales du document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newlength{\margegauche}
-\setlength{\margegauche}{108.405pt}%{1.5in}
-\newlength{\margedroite}
-\setlength{\margedroite}{54.2025pt}%{72.27pt}%{1in}%{0.75in}
-\setlength{\oddsidemargin}{\margegauche - (72.27pt + \hoffset)}%{\margegauche - (1in + \hoffset)}
-%\setlength{\evensidemargin}{\margedroite - (72.27pt + \hoffset)}%{\margedroite - (1in + \hoffset)} % Pour une mise en page recto-verso
-\setlength{\textwidth}{\paperwidth - \margegauche - \margedroite}
-%\setlength{\marginparsep}{0pt}
-%\setlength{\marginparwidth}{\margedroite}
+%\newlength{\margegauche}
+%\setlength{\margegauche}{108.405pt}%{1.5in}
+%\newlength{\margedroite}
+%\setlength{\margedroite}{54.2025pt}%{72.27pt}%{1in}%{0.75in}
+%\setlength{\oddsidemargin}{\margegauche - (72.27pt + \hoffset)}%{\margegauche - (1in + \hoffset)}
+%%\setlength{\evensidemargin}{\margedroite - (72.27pt + \hoffset)}%{\margedroite - (1in + \hoffset)} % Pour une mise en page recto-verso
+%\setlength{\textwidth}{\paperwidth - \margegauche - \margedroite}
+%%\setlength{\marginparsep}{0pt}
+%%\setlength{\marginparwidth}{\margedroite}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Marges verticales du document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newlength{\margehaut}
-\setlength{\margehaut}{108.405pt}%{1.5in}
-\newlength{\margebas}
-\setlength{\margebas}{54.2025pt}%{0.75in}
-\setlength{\topmargin}{-15.363pt}%{-5.4mm} % 1 in - 20 mm
-\setlength{\headheight}{12pt}
-\setlength{\headsep}{\margehaut - \headheight - \topmargin - 72.27pt - \voffset}%{\margehaut - \headheight - \topmargin - 1in - \voffset}
-\setlength{\textheight}{\paperheight - \margehaut - \margebas}
+%\newlength{\margehaut}
+%\setlength{\margehaut}{108.405pt}%{1.5in}
+%\newlength{\margebas}
+%\setlength{\margebas}{54.2025pt}%{0.75in}
+%\setlength{\topmargin}{-15.363pt}%{-5.4mm} % 1 in - 20 mm
+%\setlength{\headheight}{12pt}
+%\setlength{\headsep}{\margehaut - \headheight - \topmargin - 72.27pt - \voffset}%{\margehaut - \headheight - \topmargin - 1in - \voffset}
+%\setlength{\textheight}{\paperheight - \margehaut - \margebas}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Marges autour des objets flottants : figures et tableaux
@@ -373,7 +382,8 @@
 %\FrenchItemizeSpacingfalse 
 %\frenchbsetup{CompactItemize=false}
 \ifx\frenchbsetup\undefined
-\FrenchItemizeSpacingtrue
+\FrenchItemizeSpacingfalse
+%\FrenchItemizeSpacingtrue %% ?? A vérifier
 \else
 \frenchbsetup{CompactItemize=false}
 \fi 
@@ -460,8 +470,7 @@
       MONTRÉAL, LE \MakeUppercase{\@datedepot}%
       
       \vspace{1em}%{.7cm}
-      {\scriptsize \copyright Tous droits réservés, \@authorcopyright,
-      \number\year.}% ©Tous droits réservés, <Prénom et nom, année de publication>
+      {\footnotesize \copyright~Tous droits réservés, \@authorcopyright, \number\year} % ©Tous droits réservés, <Prénom et nom, année de publication>
    \end{center}
    \end{titlepage}
 \cleardoublepage
@@ -506,25 +515,17 @@
     
  % Jury
     \ifthenelse{\equal{\NomExamExt}{Nom d'un membre du jury}}{}{%
-	\PrefJury~\NomJury\\
-%      \PrefJury~\NomJury\ifthenelse{\equal{\PlusTxtJury}{}}{,~}{,~\PlusTxtJury}%
-%     \TxtJury\\%
-      % \vspace{3pt}
+	\PrefJury~\NomJury,~\TxtJury\\
       \AffilJury\par%
       \vspace{1em}
     }%
 
     % Examinateur externe
     \ifthenelse{\equal{\NomExamExt}{Nom de l'examinateur externe}}{}{%
-      \PrefExamExt~\NomExamExt\\
-%	\PrefExamExt~\NomExamExt\ifthenelse{\equal{\PlusTxtExamExt}{}}{,~}{,~\PlusTxtExamExt,~}%
-   %   \TxtExamExt\\%
-      % \vspace{3pt}
+      \PrefExamExt~\NomExamExt,~\TxtExamExt\\
       \AffilExamExt\par%
       \vspace{1em}
-    }%
-    
-   
+    }% 
     
     % JuryB optionnel
     \ifthenelse{\equal{\NomJuryB}{Nom d'un membre du jury}}{}{%
@@ -1069,6 +1070,7 @@
     \@starttoc{lot}%
     }
 }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numérotation des tableaux
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1197,45 +1199,79 @@
   \endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newlength{\tempabovecaptionskip}   %% Pour enlever l'éspace après le caption du tableau
 
 
-\def\tablestring{table}%
-\def\figurestring{figure}%
-\def\listingstring{listing}%
-%\def\algorithmstring{algorithme}%
-\long\def\@makecaption#1#2#3{%
-\ifx\figurestring#3%
-  \vskip\abovecaptionskip%
-  \linespread{1}
-  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
-  \ifdim \wd\@tempboxa <\hsize
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \else
-    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip%
-\else
-  \ifx\tablestring#3
-    \vskip\belowcaptionskip%
-    \begin{center}
-      \renewcommand{\baselinestretch}{1}\small\normalsize%
-      {\normalsize #1 #2}\par%
-%      {\normalsize #1}\par%
-%      \vskip 12\p@%
-%      {\normalsize #2}\par%
-    \end{center}
-    \vskip\abovecaptionskip%
-  %% Pascal Giard - Ajout support pour les captions autres que table et figure
-  \else
-    \vskip\abovecaptionskip%
-    \begin{center}
-      \renewcommand{\baselinestretch}{1}\small\normalsize%
-      {\normalsize \parbox[t]{\largetiqfig}{\bfseries#1} \bfseries #2}\par%
-    \end{center}
-    \vskip\belowcaptionskip%
+%%%%
+% On utilise le package caption pour définir le format des légendes
+%
+\captionsetup[figure]{labelfont={bf,singlespacing},justification=centering}
+\captionsetup[table]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Etant donne que la commande \captionsetup{list=no} n a pas marche pour enlever les legendes
+% des figures et des tableaux des listes de figures et tableau, je triche en declarant un nouveau
+% float pour les annexes []
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareCaptionType{figureap}[Figure]
+\captionsetup[figureap]{labelfont=bf,justification=centering}
+\renewenvironment{figureap}[1][]{%
+  \@float{figureap}%
+  \centering
+}{%
+  \end@float
+}
+
+\DeclareCaptionType{tableap}[Tableau]
+\captionsetup[tableap]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
+\renewenvironment{tableap}[1][]{%
+  \@float{tableap}%
+%  \footnotesize
+  \centering
+}{%
+  \end@float
+}
+
+
+%\def\tablestring{table}%
+%\def\figurestring{figure}%
+%\def\listingstring{listing}%
+%%\def\algorithmstring{algorithme}%
+%\long\def\@makecaption#1#2#3{%
+%\ifx\figurestring#3%
+%  \vskip\abovecaptionskip%
+%  \linespread{1}
+%  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
+%  \ifdim \wd\@tempboxa <\hsize
+%    \global \@minipagefalse
+%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+%  \else
+%    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
+%    \global \@minipagefalse
+%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+%  \fi
+%  \vskip\belowcaptionskip%
+%\else
+%  \ifx\tablestring#3
+%    %% Pour enlever l'éspace après le caption du tableau ...plus besoin
+%%    \setlength{\tempabovecaptionskip}{\abovecaptionskip}
+%%    \setlength{\abovecaptionskip}{-0.4cm}
+%    
+%    \vskip \belowcaptionskip%
+%    \begin{center}
+%      \renewcommand{\baselinestretch}{1}\small\normalsize%
+%      {\normalsize #1 \ \ #2}\par%
+%%      {\normalsize #1}\par%
+%%      \vskip 12\p@%
+%%      {\normalsize #2}\par%
+%    \end{center}
+%    \vskip
+%    \abovecaptionskip%
+%
+%%    \setlength{\abovecaptionskip}{\tempabovecaptionskip} %%réprends l'ancienne valeur
+%  %% Pascal Giard - Ajout support pour les captions autres que table et figure
+%  \else
 %    \vskip\abovecaptionskip
 %    \linespread{1}
 %    \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
@@ -1248,10 +1284,9 @@
 %      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
 %    \fi
 %    \vskip\belowcaptionskip
-  \fi
-\fi
-}
-
+%  \fi
+%\fi
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Numérotation des annexes en chiffres arabes
