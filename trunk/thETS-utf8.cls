@@ -160,17 +160,17 @@
 \RequirePackage{ifthen} %% Permet de réaliser des tests sur des variables
 \RequirePackage{amsthm} % clc
 \RequirePackage{amsfonts} % Lettres Majuscule d'ensemble (R, N, etc)
-\RequirePackage{longtable}
+\RequirePackage{longtable, ltcaption}
 \RequirePackage{float}
 \RequirePackage{listings} %% Code listings (extraits de code)
-\RequirePackage[]{silence} %% Suppress useless Warning in this class
+%\RequirePackage[]{silence} %% Suppress useless Warning in this class
 \RequirePackage[ruled,noresetcount,noend,french]{algorithm2e}
-\RequirePackage{setspace}
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
 %\RequirePackage[authoryear]{natbib}
 \RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.75in,bmargin=0.75in,body={6.25in,8.75in}]{geometry}
-%\RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption}
+\RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption}
+
 
 %% Exec de l'option web pour activer hyperref (Menegon 26-07-2010)
 \ifthenelse{\equal{\WithHyperref}{true}}{
@@ -1145,7 +1145,7 @@
 \newlength{\descril}
 \setlength{\descril}{2cm}
 \newenvironment{listofsymbols}[1][\descril]{%
-  \chapter*{Liste des abréviations, sigles et acronymes}
+  \chapter*{Liste des symboles et unités de mesure}
   %\addcontentsline{toc}{chapter}{\MakeUppercase{Liste des abréviations et sigles}} % Ajout dans la table des matières
   \begin{list}{\mbox{}}{%
       \let\makelabel\losymblabel%
@@ -1154,6 +1154,21 @@
       \labelsep    1mm}}%
   {\end{list}}
 \newcommand*\losymblabel[1]{\hspace\labelsep
+  \normalfont\mbox{ #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Liste des symboles basé sur l'environnement ``description''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{listofabbr}[1][\descril]{%
+  \chapter*{Liste des abréviations, sigles et acronymes}
+  %\addcontentsline{toc}{chapter}{\MakeUppercase{Liste des abréviations et sigles}} % Ajout dans la table des matières
+  \begin{list}{\mbox{}}{%
+      \let\makelabel\losymblabel%
+      \leftmargin #1%
+      \labelwidth \leftmargin%
+      \labelsep    1mm}}%
+  {\end{list}}
+\renewcommand*\losymblabel[1]{\hspace\labelsep
   \normalfont\mbox{ #1}}
 
 
@@ -1199,45 +1214,79 @@
   \endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newlength{\tempabovecaptionskip}   %% Pour enlever l'éspace après le caption du tableau
 
 
-\def\tablestring{table}%
-\def\figurestring{figure}%
-\def\listingstring{listing}%
-%\def\algorithmstring{algorithme}%
-\long\def\@makecaption#1#2#3{%
-\ifx\figurestring#3%
-  \vskip\abovecaptionskip%
-  \linespread{1}
-  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
-  \ifdim \wd\@tempboxa <\hsize
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \else
-    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip%
-\else
-  \ifx\tablestring#3
-    \vskip\belowcaptionskip%
-    \begin{center}
-      \renewcommand{\baselinestretch}{1}\small\normalsize%
-      {\normalsize #1 #2}\par%
-%      {\normalsize #1}\par%
-%      \vskip 12\p@%
-%      {\normalsize #2}\par%
-    \end{center}
-    \vskip\abovecaptionskip%
-  %% Pascal Giard - Ajout support pour les captions autres que table et figure
-  \else
-    \vskip\abovecaptionskip%
-    \begin{center}
-      \renewcommand{\baselinestretch}{1}\small\normalsize%
-      {\normalsize \parbox[t]{\largetiqfig}{\bfseries#1} \bfseries #2}\par%
-    \end{center}
-    \vskip\belowcaptionskip%
+%%%%
+% On utilise le package caption pour définir le format des légendes
+%
+\captionsetup[figure]{labelfont={bf,singlespacing},justification=centering}
+\captionsetup[table]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Etant donne que la commande \captionsetup{list=no} n a pas marche pour enlever les legendes
+% des figures et des tableaux des listes de figures et tableau, je triche en declarant un nouveau
+% float pour les annexes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareCaptionType{figureap}[Figure]
+\captionsetup[figureap]{labelfont=bf,justification=centering}
+\renewenvironment{figureap}[1][]{%
+  \@float{figureap}%
+  \centering
+}{%
+  \end@float
+}
+
+\DeclareCaptionType{tableap}[Tableau]
+\captionsetup[tableap]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
+\renewenvironment{tableap}[1][]{%
+  \@float{tableap}%
+%  \footnotesize
+  \centering
+}{%
+  \end@float
+}
+
+
+%\def\tablestring{table}%
+%\def\figurestring{figure}%
+%\def\listingstring{listing}%
+%%\def\algorithmstring{algorithme}%
+%\long\def\@makecaption#1#2#3{%
+%\ifx\figurestring#3%
+%  \vskip\abovecaptionskip%
+%  \linespread{1}
+%  \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
+%  \ifdim \wd\@tempboxa <\hsize
+%    \global \@minipagefalse
+%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+%  \else
+%    \sbox\@tempboxa{\normalsize\parbox[t]{\larglegendfig}{\centering \parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}}%
+%    \global \@minipagefalse
+%    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+%  \fi
+%  \vskip\belowcaptionskip%
+%\else
+%  \ifx\tablestring#3
+%    %% Pour enlever l'éspace après le caption du tableau ...plus besoin
+%%    \setlength{\tempabovecaptionskip}{\abovecaptionskip}
+%%    \setlength{\abovecaptionskip}{-0.4cm}
+%    
+%    \vskip \belowcaptionskip%
+%    \begin{center}
+%      \renewcommand{\baselinestretch}{1}\small\normalsize%
+%      {\normalsize #1 \ \ #2}\par%
+%%      {\normalsize #1}\par%
+%%      \vskip 12\p@%
+%%      {\normalsize #2}\par%
+%    \end{center}
+%    \vskip
+%    \abovecaptionskip%
+%
+%%    \setlength{\abovecaptionskip}{\tempabovecaptionskip} %%réprends l'ancienne valeur
+%  %% Pascal Giard - Ajout support pour les captions autres que table et figure
+%  \else
 %    \vskip\abovecaptionskip
 %    \linespread{1}
 %    \sbox\@tempboxa{\normalsize\parbox[t]{\largetiqfig}{\bfseries#1}\bfseries#2}%
@@ -1250,9 +1299,9 @@
 %      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
 %    \fi
 %    \vskip\belowcaptionskip
-  \fi
-\fi
-}
+%  \fi
+%\fi
+%}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1491,6 +1540,7 @@
 }{%
   \end@float
 }
+
 %
 % Positionnement des flottants
 %   on privilégie htbp (here, top, bottom, next page)
@@ -1524,7 +1574,7 @@
 % Bibliographie
 % Pas utilisé -Stéphane Mercier
 
-\renewcommand{\bibname}{BIBLIOGRAPHIE}
+\renewcommand{\bibname}{RÉFÉRENCES BIBLIOGRAPHIQUES}
 
 % \def\@biblabel#1{} % supprime les labels dans la bibliographie
 % \renewcommand{\cite}{\citep} % mode de citation avec parenthèses, nécessite le package natbib
