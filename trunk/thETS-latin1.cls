@@ -501,7 +501,7 @@
     \AffilDirect\par
     \vspace{1em}
     % Codirecteur optionnel
-    \ifthenelse{\equal{\NomCoDirect}{Nom du co-directeur}}{}{%
+    \ifthenelse{\equal{\NomCoDirect}{Nom du codirecteur}}{}{%
       \PrefCoDirect~\NomCoDirect,~\TxtCoDirect\\%
       \vspace{3pt}
       \AffilCoDirect\par%
