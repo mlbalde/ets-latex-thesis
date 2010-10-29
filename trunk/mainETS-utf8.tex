@@ -92,6 +92,11 @@ Here is the abstract.
 \listoffigures
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTE DES EXTRAITS DE CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstlistoflistings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LISTE DES ABRÉVIATIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{listofabbr}[3cm]
@@ -121,6 +126,39 @@ Here is the abstract.
 \section{Section}
 \subsection{Sous-Section}
 \subsubsection{Sous-Sous-Section}
+
+\subsubsection{Code}
+Ceci est un extrait de code~:
+\begin{lstlisting}
+[language=Matlab,caption=Initialisation,label=lst:init]
+for i=1:N
+  tab(i)=rand(1,1);
+end
+\end{lstlisting}
+
+\subsubsection{Tableau}
+Ceci est un tableau~:
+\begin{table}[h]
+	\caption{Petit tableau}
+		\begin{tabular}{|c|c|c|c|}
+		\hline
+			blá & blá & blá & blá \\
+			\hline
+		\end{tabular}
+	\label{tab:UnTableau}
+\end{table}
+
+\subsubsection{Figure}
+Ceci est une figure~:
+\begin{figure}[h]
+  \fbox{ % cette commande est nécéssaire pour encadrer les figures
+	\centering
+		\includegraphics{logoets.jpg}
+	}
+	\caption{Logo de l'École de Technologie Supérieure. Tiré de \cite{ETS2010}.}
+	\label{fig:logoets}
+\end{figure}
+
 %\include{chapitre1}
 %\include{chapitre2}
 %\include{chapitre3}
@@ -144,6 +182,8 @@ Here is the abstract.
 \appendix
 \multiannexe % si on a plus d'une annexe
 %\include{annexe1}
+\chapter{Titre de l'annexe}
+S'il y lieu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BIBLIOGRAPHIE
