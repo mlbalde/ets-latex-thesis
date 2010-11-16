@@ -1,32 +1,32 @@
 \documentclass [memoire, letterpaper, oneside, fleqn,12pt]{thETS-latin1}
-% pour une maÃ®trise rajouter l'option memoire Ã  la classe (defaut:these)
+% pour une maîtrise rajouter l'option memoire à la classe (defaut:these)
 % pour activer les liens hypertextes, ajouter l'option hypertext
 
 \listfiles
 
 %------------------------------------------------------------------------------------------------------------------------------------------
 
-% Ã  dÃ©commanter et modifier si nÃ©cessaire dans le cas d'une maitrise
-\genie{Logiciel} %\genie{Ã©lectrique}
+% à décommanter et modifier si nécessaire dans le cas d'une maitrise
+\genie{Logiciel} %\genie{électrique}
 
-\title{titre de la thÃ¨se}
+\title{titre de la thèse}
 
-\author{PrÃ©nom NOM}
-\authorcopyright{PrÃ©nom Nom}
+\author{Prénom NOM}
+\authorcopyright{Prénom Nom}
 
 \datesoutenance{\today}
 
 \datedepot{\today}
 
-\directeur{M. }{PrÃ©nom Nom}{dÃ©partement et institution}
+\directeur{M. }{Prénom Nom}{département et institution}
 
-\codirecteur{Mme.}{PrÃ©nom Nom}{dÃ©partement et institution}
+\codirecteur{Mme.}{Prénom Nom}{département et institution}
 
-\president{M.}{PrÃ©nom Nom}{dÃ©partement et institution}
+\president{M.}{Prénom Nom}{département et institution}
 
-\jury{Mme.}{PrÃ©nom Nom}{dÃ©partement et institution}{}
+\jury{Mme.}{Prénom Nom}{département et institution}{}
 
-\examinexterne{M.}{PrÃ©nom Nom}{dÃ©partement et institution}{}
+\examinexterne{M.}{Prénom Nom}{département et institution}{}
 
 %------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PRÃ‰SENTATION JURY
+% PRÉSENTATION JURY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \presentjury
 
@@ -61,9 +61,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SOMMAIRE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\motscles{mot-clÃ©1, mot-clÃ©2}
+\motscles{mot-clé1, mot-clé2}
 \begin{sommaire}
-Ceci est le rÃ©sumÃ©.
+Ceci est le résumé.
 \end{sommaire} 
 
 
@@ -77,7 +77,7 @@ Here is the abstract.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TABLE DES MATIÃˆRES
+% TABLE DES MATIÈRES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 
@@ -97,10 +97,10 @@ Here is the abstract.
 \lstlistoflistings
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% LISTE DES ABRÃ‰VIATIONS
+% LISTE DES ABRÉVIATIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{listofabbr}[3cm]
-\item[SDA] Signification De l'AbrÃ©viation
+\item[SDA] Signification De l'Abréviation
 \end{listofabbr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -111,7 +111,7 @@ Here is the abstract.
 \end{listofsymbols}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CORPS DE LA THÃˆSE
+% CORPS DE LA THÈSE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \pagenumbering{arabic}
@@ -138,25 +138,24 @@ end
 
 \subsubsection{Tableau}
 Ceci est un tableau~:
-\begin{table}[h]
-	\caption{Petit tableau}
-		\begin{tabular}{|c|c|c|c|}
-		\hline
-			blÃ¡ & blÃ¡ & blÃ¡ & blÃ¡ \\
-			\hline
-		\end{tabular}
-	\label{tab:UnTableau}
+\begin{table}[ht]
+    \begin{tabular}{|c|c|c|c|}\hline
+      blá & blá & blá & blá \\\hline
+      blá & blá & blá & blá \\\hline
+    \end{tabular}
+  \caption{Petit tableau}
+  \label{tab:UnTableau}
 \end{table}
 
 \subsubsection{Figure}
 Ceci est une figure~:
 \begin{figure}[h]
-  \fbox{ % cette commande est nÃ©cÃ©ssaire pour encadrer les figures
-	\centering
-		\includegraphics{logoets.jpg}
-	}
-	\caption{Logo de l'Ã‰cole de Technologie SupÃ©rieure. TirÃ© de \cite{ETS2010}.}
-	\label{fig:logoets}
+  \fbox{ % cette commande est nécéssaire pour encadrer les figures
+    \centering
+    \includegraphics[width=.8\textwidth]{logoets.jpg}
+  }
+  \caption{Logo de l'École de Technologie Supérieure. Tiré de \cite{ETS2010}.}
+  \label{fig:logoets}
 \end{figure}
 
 %\include{chapitre1}
@@ -190,9 +189,9 @@ S'il y lieu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{plain-fr}
 %\bibliographystyle{plainnat-fr} %With \usepackage[authoryear]{natbib}
-\renewcommand{\bibname}{RÃ‰FÃ‰RENCES BIBLIOGRAPHIQUES}
-\addcontentsline{toc}{chapter}{RÃ‰FÃ‰RENCES BIBLIOGRAPHIQUES}
-%\bibliography{nom_fichier_bib} % Ã  dÃ©commander et indiquer la liste des fichiers bib
+\renewcommand{\bibname}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+\addcontentsline{toc}{chapter}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+%\bibliography{nom_fichier_bib} % à décommander et indiquer la liste des fichiers bib
 
 %------------------------------------------------------------------------------------------------------------------------------------------
 
