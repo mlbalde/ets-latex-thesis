@@ -138,25 +138,24 @@ end
 
 \subsubsection{Tableau}
 Ceci est un tableau~:
-\begin{table}[h]
-	\caption{Petit tableau}
-		\begin{tabular}{|c|c|c|c|}
-		\hline
-			blá & blá & blá & blá \\
-			\hline
-		\end{tabular}
-	\label{tab:UnTableau}
+\begin{table}[ht]
+    \begin{tabular}{|c|c|c|c|}\hline
+      blá & blá & blá & blá \\\hline
+      blá & blá & blá & blá \\\hline
+    \end{tabular}
+  \caption{Petit tableau}
+  \label{tab:UnTableau}
 \end{table}
 
 \subsubsection{Figure}
 Ceci est une figure~:
 \begin{figure}[h]
   \fbox{ % cette commande est nécéssaire pour encadrer les figures
-	\centering
-		\includegraphics{logoets.jpg}
-	}
-	\caption{Logo de l'École de Technologie Supérieure. Tiré de \cite{ETS2010}.}
-	\label{fig:logoets}
+    \centering
+    \includegraphics[width=.8\textwidth]{logoets.jpg}
+  }
+  \caption{Logo de l'École de Technologie Supérieure. Tiré de \cite{ETS2010}.}
+  \label{fig:logoets}
 \end{figure}
 
 %\include{chapitre1}

@@ -163,6 +163,7 @@
 \RequirePackage{longtable, ltcaption}
 \RequirePackage{float}
 \RequirePackage{listings} %% Code listings (extraits de code)
+\RequirePackage{graphicx} %% Affichage d'images
 %\RequirePackage[]{silence} %% Suppress useless Warning in this class
 \RequirePackage[ruled,noresetcount,noend,french]{algorithm2e}
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
