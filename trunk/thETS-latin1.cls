@@ -1637,6 +1637,7 @@
 \newtheorem{lemme}{Lemme}
 \newtheorem{probleme}{Problème}
 \newtheorem{corollaire}{Corollaire}
+\newtheorem{hypothese}{Hypothèse}
 \newtheorem{question}{Question}
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{axiome}{Axiome}[section]
