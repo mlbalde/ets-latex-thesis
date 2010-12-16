@@ -1631,7 +1631,8 @@
 %\let\endthebibliography=\endlist
 
 %% Déclarations des théorèmes
-\theoremstyle{plain}
+\newtheoremstyle{thstyets}{3pt}{3pt}{}{}{\bf}{}{.5em}{}
+\theoremstyle{thstyets}
 \newtheorem{definition}{Définition}[chapter]
 \newtheorem{exemple}{Exemple}[section]
 \newtheorem{lemme}{Lemme}
