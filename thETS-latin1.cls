@@ -545,7 +545,7 @@
       ELLE
     }{
       IL
-    } A FAIT L'OBJET D'UNE SOUTENANCE DEVANT JURY ET PUBLIC\\
+    }A FAIT L'OBJET D'UNE SOUTENANCE DEVANT JURY ET PUBLIC\\
     LE \MakeUppercase{\@datesoutenance}\\
     À L'ÉCOLE DE TECHNOLOGIE SUPÉRIEURE
   \end{center}\par%
