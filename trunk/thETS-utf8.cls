@@ -169,8 +169,12 @@
 \RequirePackage{stmaryrd} %% More math symbols, like \llbracket\rrbracket
 %\RequirePackage{babelbib} %% Bon affichage de la bibliographie
 %\RequirePackage[authoryear]{natbib}
-\RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.75in,bmargin=0.75in,body={6.25in,8.75in}]{geometry}
+\RequirePackage[paper=letterpaper,tmargin=1.5in,lmargin=1.5in,rmargin=0.8in,bmargin=0.75in]{geometry}
 \RequirePackage[labelfont={bf},margin=10pt,justification=centering]{caption}
+% Rectification position numéro de page (Crappy mais fonctionnel [Remi])
+\addtolength{\headsep}{0.8cm}
+\addtolength{\topmargin}{-0.9cm}
+
 
 
 %% Exec de l'option web pour activer hyperref (Menegon 26-07-2010)
@@ -491,7 +495,7 @@
       CETTE THÈSE A ÉTÉ ÉVALUÉE
     }{CE MÉMOIRE A ÉTÉ ÉVALUÉ
     }\\
-    PAR UN JURY COMPOSÉ DE\\
+    PAR UN JURY COMPOSÉ DE~:\\
     \vspace{6em}%
   \end{center}
   \begin{flushleft}
@@ -546,7 +550,10 @@
     }{
       IL
     }A FAIT L'OBJET D'UNE SOUTENANCE DEVANT JURY ET PUBLIC\\
-    LE \MakeUppercase{\@datesoutenance}\\
+    \ifthenelse{\equal{\@datesoutenance}{}}{
+    }{
+      LE \MakeUppercase{\@datesoutenance}\\
+    }
     À L'ÉCOLE DE TECHNOLOGIE SUPÉRIEURE
   \end{center}\par%
   \vfil\null%
@@ -1221,7 +1228,7 @@
 %%%%
 % On utilise le package caption pour définir le format des légendes
 %
-\captionsetup[figure]{labelfont={bf,singlespacing},justification=centering}
+\captionsetup[figure]{labelfont={singlespacing},justification=centering}
 \captionsetup[table]{labelfont=normalfont,labelsep=quad,justification=centering,skip=1cm}
 
 
@@ -1231,7 +1238,7 @@
 % float pour les annexes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareCaptionType{figureap}[Figure]
-\captionsetup[figureap]{labelfont=bf,justification=centering}
+\captionsetup[figureap]{labelfont=justification=centering}
 \renewenvironment{figureap}[1][]{%
   \@float{figureap}%
   \centering
@@ -1631,7 +1638,8 @@
 %\let\endthebibliography=\endlist
 
 %% Déclarations des théorèmes
-\newtheoremstyle{thstyets}{3pt}{3pt}{}{}{\bf}{}{.5em}{}
+\newtheoremstyle{thstyets}{13pt}{3pt}{}{}{\bf}{}{.5em}{\thmname{#1}
+\thmnumber{#2} \textnormal{\emph{\thmnote{(#3)}}}\\}
 \theoremstyle{thstyets}
 \newtheorem{definition}{Définition}[chapter]
 \newtheorem{exemple}{Exemple}[section]
@@ -1645,3 +1653,20 @@
 \newtheorem{theoreme}{Théorème}[section]
 \newtheorem{remarque}{Remarque}[section]
 \newtheorem{proposition}[theoreme]{Proposition}
+
+%% Enlève le décalage des listes 
+\newcommand{\compactlist}{\setlength{\itemsep}{0pt} \setlength{\parskip}{0pt}\setlength{\leftskip}{-1.5em}}
+\let\orig@Itemize =\itemize
+\let\orig@Enumerate =\enumerate
+\let\orig@Description =\description
+\renewenvironment{itemize}{
+  \orig@Itemize\compactlist
+}{\endlist\vskip 1em}
+\renewenvironment{enumerate}{\orig@Enumerate\compactlist\setlength{\labelwidth}{1em}\setlength{\leftskip}{-1em}}{\endlist}
+\renewenvironment{description}{
+  \setlength{\leftmargini}{0em}
+  \orig@Description
+  \setlength{\itemindent}{0em}
+  \setlength{\labelsep}{\textwidth}
+}{\endlist\hfill}
+
