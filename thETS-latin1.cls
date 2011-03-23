@@ -153,7 +153,7 @@
 \LoadClass{book} %% Chargement de la classe book
 \RequirePackage{mathptmx} %% Police Times (New)
 \RequirePackage[frenchb]{babel} %% Francisation du document 
-\RequirePackage[utf8]{inputenc} %% Prise en compte de la frappe de caractères accentués
+\RequirePackage[latin1]{inputenc} %% Prise en compte de la frappe de caractères accentués
 \RequirePackage[T1]{fontenc} %% Codage standard des fontes LaTeX pour le français 
 \RequirePackage{calc} %% permet de réaliser des additions et soustractions de valeurs lors d'affectation de variables
 \RequirePackage{setspace}
