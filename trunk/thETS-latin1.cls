@@ -551,6 +551,7 @@
       IL
     }A FAIT L'OBJET D'UNE SOUTENANCE DEVANT JURY ET PUBLIC\\
     \ifthenelse{\equal{\@datesoutenance}{}}{
+      LE <<DATE>>\\
     }{
       LE \MakeUppercase{\@datesoutenance}\\
     }
